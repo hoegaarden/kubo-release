@@ -14,6 +14,8 @@ packages:
 properties:
   addons-spec:
     description: Spec of the addons to be deployed into the Kubernetes cluster
+  kubernetes-api-url:
+    description: The APIServer's external api url
 
 consumes:
 - name: kube-apiserver

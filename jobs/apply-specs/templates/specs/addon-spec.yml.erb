@@ -1,1 +1,19 @@
-<%= p('addons-spec')%>
+<%
+  require 'uri'
+
+  # https://one.pks.pcf.fostercity.cf-app.com:8443
+  apiUrl = p('kubernetes-api-url')
+  addonsSpec = p('addons-spec')
+
+  begin
+    host = URI(apiUrl).host
+    unless host.to_s.empty?
+      addonsSpec.gsub!("__api_url__", host)
+    end
+  rescue => ex
+    # puts ex
+    nil
+  end
+%>
+
+<%= addonsSpec %>
